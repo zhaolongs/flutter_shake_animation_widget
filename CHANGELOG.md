@@ -1,3 +1,5 @@
-## [0.0.1] - TODO: Add release date.
+## [1.0.0] - 更新支持
 
-* TODO: Describe initial release.
+* 给任意的Widget添加抖动动画
+* 抖动支持左右抖动、上下拦截、微旋转抖动、随机抖动
+* 支持给一个String中的每一个字符添加抖动
