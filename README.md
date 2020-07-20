@@ -1,0 +1,2 @@
+# flutter_shake_animation_widget
+Flutter抖动动画组件，FLutter颤动动画
