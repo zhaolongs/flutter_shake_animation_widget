@@ -1,3 +1,11 @@
+## [1.0.1] - 修复抖动次数支持 
+  ```
+     ///开启抖动动画
+     ///参数shakeCount 用来配置抖动次数
+     ///通过 controller start 方法默认为 1
+     _shakeAnimationController.start(shakeCount: 1);
+  ```
+
 ## [1.0.0] - 更新支持
 
 * 给任意的Widget添加抖动动画

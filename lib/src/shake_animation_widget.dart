@@ -123,6 +123,9 @@ class _ShakeAnimationState extends State<ShakeAnimationWidget>
   /// lib/demo/shake/shake_animation_widget.dart
   ///抖动动画控制器监听
   void shakeListener(isOpen, shakeCount) {
+
+    _shakeCurrentCount = 0;
+
     if (isOpen) {
       ///赋值抖动次数
       _shakeTotalCount = shakeCount;
