@@ -21,6 +21,13 @@ class TestPage extends StatefulWidget {
 
 //lib/code/main_data.dart
 class _TestPageState extends State<TestPage> {
+  //定义菜单按钮选项
+  List<Icon> iconList = [
+    Icon(Icons.add),
+    Icon(Icons.save),
+    Icon(Icons.share),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,37 +41,51 @@ class _TestPageState extends State<TestPage> {
         body: Container(
             width: double.infinity,
             height: double.infinity,
-            child: Column(
+            child: Stack(
               children: [
-                ///通用组件的抖动
-                buildShakeAnimationWidget(),
+                Column(
+                  children: [
+                    ///通用组件的抖动
+                    buildShakeAnimationWidget(),
 
-                ///文字的抖动
-                buildTextAnimationWidget(),
+                    ///文字的抖动
+                    buildTextAnimationWidget(),
+                  ],
+                ),
+                //向上弹出的按钮组件
+                buildRoteFloatingButton(),
               ],
             )),
       ),
     );
   }
 
+  ///向上弹出的按钮组件
+  RoteFloatingButton buildRoteFloatingButton() {
+    return RoteFloatingButton(
+      //子菜单按钮选项
+      iconList: iconList,
+      ///子菜单按钮的点击事件回调
+      clickCallback: (int index) {
+        print("点击了按钮$index");
+      },
+    );
+  }
+
   buildTextAnimationWidget() {
     return ShakeTextAnimationWidget(
-      ///需要设置抖动效果的文本
+      //需要设置抖动效果的文本
       animationString: "这里是文字的抖动",
-
-      ///字符间距
+      //字符间距
       space: 1.0,
-
-      ///行间距
+      //行间距
       runSpace: 10,
-
-      ///文字的样式
+      //文字的样式
       textStyle: TextStyle(
         ///文字的大小
         fontSize: 25,
       ),
-
-      ///抖动次数
+      //抖动次数
       shakeCount: 0,
     );
   }
@@ -77,22 +98,17 @@ class _TestPageState extends State<TestPage> {
   ///构建抖动效果
   ShakeAnimationWidget buildShakeAnimationWidget() {
     return ShakeAnimationWidget(
-      ///抖动控制器
+      //抖动控制器
       shakeAnimationController: _shakeAnimationController,
-
-      ///微旋转的抖动
+      //微旋转的抖动
       shakeAnimationType: ShakeAnimationType.SkewShake,
-
-      ///设置不开启抖动
+      //设置不开启抖动
       isForward: false,
-
-      ///默认为 0 无限执行
+      //默认为 0 无限执行
       shakeCount: 0,
-
-      ///抖动的幅度 取值范围为[0,1]
+      //抖动的幅度 取值范围为[0,1]
       shakeRange: 0.2,
-
-      ///执行抖动动画的子Widget
+      //执行抖动动画的子Widget
       child: RaisedButton(
         child: Text(
           '测试',
