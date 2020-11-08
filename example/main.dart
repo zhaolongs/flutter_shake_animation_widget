@@ -129,4 +129,54 @@ class _TestPageState extends State<TestPage> {
       ),
     );
   }
+
+  Widget buildProgressButton() {
+    return //切换样式的动画按钮
+      AnimatedButton(
+        width: 120.0,
+        height: 40,
+        buttonText: '动画样式按钮',
+        clickCallback: (){
+          print("点击事件回调");
+        },
+      );
+  }
+
+
+  //动画按钮使用到的控制器
+  AnimatedStatusController animatedStatusController =
+  new AnimatedStatusController();
+
+  //切换样式的动画按钮
+  Widget buildAnimatedStatusButton() {
+    return AnimatedStatusButton(
+      //控制器
+      animatedStatusController: animatedStatusController,
+      //显示按钮的宽度
+      width: 220.0,
+      //显示按钮的高度
+      height: 40,
+      //动画交互时间
+      milliseconds: 1000,
+      buttonText: '提交',
+      //背景颜色
+      backgroundNormalColor: Colors.white,
+      //边框颜色
+      borderNormalColor: Colors.deepOrange,
+      //文字颜色
+      textNormalCcolor: Colors.deepOrange,
+      //点击回调
+      clickCallback: () async {
+        print("点击事件回调");
+        //模拟耗时操作
+        await Future.delayed(Duration(milliseconds: 4000));
+
+        //返回false 会一直在转圈圈
+        //返回true 会回到默认显示样式
+        return Future.value(false);
+      },
+    );
+  }
+
+
 }

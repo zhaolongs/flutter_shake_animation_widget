@@ -1,4 +1,11 @@
 
+## [2.1.0] 新增两个自定义动画效果的按钮
+
+   ```
+   AnimatedButton
+   AnimatedStatusButton
+   ```
+
 ## [2.0.0] - 新增向上弹出动画按钮
   ```
    FloatingActionButton
