@@ -173,9 +173,10 @@ class _ShakeAnimationState extends State<ShakeAnimationWidget>
   void dispose() {
     ///销毁
     _animationController.dispose();
-
-    ///移动监听
-    widget.shakeAnimationController.removeListener();
+    if(widget.shakeAnimationController!=null){
+      ///移动监听
+      widget.shakeAnimationController.removeListener();
+    }
     super.dispose();
   }
 
