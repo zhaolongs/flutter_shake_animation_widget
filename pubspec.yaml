@@ -1,6 +1,6 @@
 name: shake_animation_widget
 description: 抖动动画、向上弹出动画
-version: 2.1.0
+version: 2.1.1
 homepage: https://github.com/zhaolongs/flutter_shake_animation_widget.git
 
 environment:

@@ -1,6 +1,10 @@
 
 import 'package:flutter/material.dart';
-
+/// 可关注公众号：我的大前端生涯   获取最新技术分享
+/// 可关注网易云课堂：https://study.163.com/instructor/1021406098.htm
+/// 可关注博客：https://blog.csdn.net/zl18603543572
+/// 头条|西瓜视频： https://www.toutiao.com/c/user/token/MS4wLjABAAAAYMrKikomuQJ4d-cPaeBqtAK2cQY697Pv9xIyyDhtwIM/
+///
 ///5.8 lib/demo/animated_button_statue.dart
 ///切换样式的按钮
 class AnimatedStatusButton extends StatefulWidget {

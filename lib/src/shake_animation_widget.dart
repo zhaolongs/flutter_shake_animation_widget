@@ -184,16 +184,13 @@ class _ShakeAnimationState extends State<ShakeAnimationWidget>
   @override
   Widget build(BuildContext context) {
     return ShakeAnimationBuilder(
-      ///执行动画的Widget
+      //执行动画的Widget
       child: widget.child,
-
-      ///动画曲线
+      //动画曲线
       animation: _angleAnimation,
-
-      ///动画类型
+      //动画类型
       shakeAnimationType: widget.shakeAnimationType,
-
-      ///随机动画时抖动的波动范围
+      //随机动画时抖动的波动范围
       randomValue: widget.randomValue,
     );
   }
