@@ -233,3 +233,57 @@ class _ExampleState extends State<Example309> {
     );
   }
 }
+
+///代码清单 3-20 垂直向上弹出的动画菜单
+///lib/code/code3/example_310_tag_page.dart
+class Example310 extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _ExampleState();
+  }
+}
+
+class _ExampleState extends State<Example310> {
+  ///构建菜单所使用到的图标
+  List<Icon> iconList = [
+    Icon(
+      Icons.android,
+      color: Colors.blue,
+      size: 18,
+    ),
+    Icon(
+      Icons.image,
+      color: Colors.red,
+      size: 18,
+    ),
+    Icon(
+      Icons.find_in_page,
+      color: Colors.orange,
+      size: 18,
+    ),
+    Icon(Icons.add, color: Colors.lightGreenAccent, size: 28),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        title: Text("垂直向上弹出菜单"),
+      ),
+      body: Container(
+        //文字标签流式布局
+        child: RoteFlowButtonMenu(
+          //图标使用的背景
+          defaultBackgroundColor: Colors.deepOrangeAccent,
+          //菜单所有的图标
+          iconList: iconList,
+          //对应菜单项点击事件回调
+          clickCallBack: (int index) {
+            print("点击了 $index");
+          },
+        ),
+      ),
+    );
+  }
+}

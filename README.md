@@ -95,3 +95,19 @@ Flutter抖动动画组件，FLutter颤动动画
   }
 
 ```
+
+
+#### 垂直向上弹出菜单
+
+```
+    RoteFlowButtonMenu(
+          //图标使用的背景
+          defaultBackgroundColor: Colors.deepOrangeAccent,
+          //菜单所有的图标
+          iconList: iconList,
+          //对应菜单项点击事件回调
+          clickCallBack: (int index) {
+            print("点击了 $index");
+          },
+        )
+```
