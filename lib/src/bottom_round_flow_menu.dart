@@ -124,7 +124,7 @@ class _MenuState extends State<BottomRoundFlowMenu>
       Color itemColor = widget.defaultBackgroundColor;
       //图标背景
       if (widget.iconBackgroundColorList != null &&
-          i > widget.iconBackgroundColorList.length) {
+          i <widget.iconBackgroundColorList.length) {
         itemColor = widget.iconBackgroundColorList[i];
       }
 
