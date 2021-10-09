@@ -16,7 +16,7 @@ class ShakeAnimationController {
   bool animationRunging = false;
 
   ///监听
-  ShakeAnimationListener _shakeAnimationListener;
+  ShakeAnimationListener? _shakeAnimationListener;
 
   ///控制器中添加监听
   setShakeListener(ShakeAnimationListener listener) {
@@ -27,7 +27,7 @@ class ShakeAnimationController {
   void start({int shakeCount = 1}) {
     if (_shakeAnimationListener != null) {
       animationRunging = true;
-      _shakeAnimationListener(true, shakeCount);
+      _shakeAnimationListener!(true, shakeCount);
     }
   }
 
@@ -35,7 +35,7 @@ class ShakeAnimationController {
   void stop() {
     if (_shakeAnimationListener != null) {
       animationRunging = false;
-      _shakeAnimationListener(false, 0);
+      _shakeAnimationListener!(false, 0);
     }
   }
 

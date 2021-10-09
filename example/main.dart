@@ -239,11 +239,11 @@ class _ExampleState extends State<Example309> {
 class Example310 extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _ExampleState();
+    return _Example310State();
   }
 }
 
-class _ExampleState extends State<Example310> {
+class _Example310State extends State<Example310> {
   ///构建菜单所使用到的图标
   List<Icon> iconList = [
     Icon(

@@ -8,13 +8,13 @@ import 'package:flutter/material.dart';
 ///切换样式的按钮
 class AnimatedButton extends StatefulWidget {
   ///按钮的宽度与高度
-  final double height;
-  final double width;
+  final double? height;
+  final double? width;
   ///圆角的大小
   final double borderRaidus;
 
   ///按钮上显示的颜色
-  final String buttonText;
+  final String? buttonText;
 
   ///按下时的颜色
   final Color borderSelectColor;
@@ -27,7 +27,7 @@ class AnimatedButton extends StatefulWidget {
   final Color textNormalCcolor;
 
   ///按钮点击事件回调
-  final Function clickCallback;
+  final Function? clickCallback;
 
   AnimatedButton({
     this.height,
@@ -52,15 +52,15 @@ class AnimatedButton extends StatefulWidget {
 class _AnimatedButtonState extends State<AnimatedButton> {
   ///属性配制值转接
   ///按钮上的文本的颜色
-  Color textColor;
+  Color? textColor;
   ///按钮背景的颜色
-  Color containerColor;
+  Color? containerColor;
   ///按钮背景边框的颜色
-  Color borderColor;
+  late Color borderColor;
   ///按钮的高度
-  double containerHeight = 0;
+  double? containerHeight = 0;
   ///按钮的背景圆角
-  double borderRaidus;
+  late double borderRaidus;
 
   ///配置默认的样式
   @override
@@ -152,7 +152,7 @@ class _AnimatedButtonState extends State<AnimatedButton> {
     return Center(
       ///文本动画样式
       child: AnimatedDefaultTextStyle(
-        child: Text(widget.buttonText),
+        child: Text(widget.buttonText!),
         duration: Duration(milliseconds: 200),
         style: TextStyle(
           color: textColor,

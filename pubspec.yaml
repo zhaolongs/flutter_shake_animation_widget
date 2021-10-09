@@ -4,8 +4,8 @@ version: 2.1.2
 homepage: https://github.com/zhaolongs/flutter_shake_animation_widget.git
 
 environment:
-  sdk: ">=2.2.0 <3.0.0"
-  flutter: ">=1.12.0 <2.0.0"
+  sdk: '>=2.12.0 <3.0.0'
+  flutter: ">=2.0.0 <3.0.0"
 dependencies:
   flutter:
     sdk: flutter

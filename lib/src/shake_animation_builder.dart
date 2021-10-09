@@ -19,8 +19,8 @@ class ShakeAnimationBuilder extends StatelessWidget {
   ///[child] 执行动画的组件
   ///[animation] 执行的动画
   ShakeAnimationBuilder(
-      {@required this.child,
-      @required this.animation,
+      {required this.child,
+      required this.animation,
       this.randomValue = 5,
       this.shakeAnimationType = ShakeAnimationType.RoateShake});
 
@@ -28,7 +28,7 @@ class ShakeAnimationBuilder extends StatelessWidget {
   final Widget child;
 
   ///动画的定义
-  final Animation<double> animation;
+  final Animation<double>? animation;
 
   ///抖动的类型
   final ShakeAnimationType shakeAnimationType;
@@ -44,8 +44,8 @@ class ShakeAnimationBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     ///通过 AnimatedBuilder 组合动画
     return AnimatedBuilder(
-      animation: animation,
-      builder: (BuildContext context, Widget child) {
+      animation: animation!,
+      builder: (BuildContext context, Widget? child) {
         return new Transform(
 
             ///构建Matrix4
@@ -63,7 +63,7 @@ class ShakeAnimationBuilder extends StatelessWidget {
   Matrix4 buildMatrix4() {
     if (shakeAnimationType == ShakeAnimationType.RoateShake) {
       ///在XOY平面绕Z轴的旋转
-      return Matrix4.rotationZ(animation.value);
+      return Matrix4.rotationZ(animation!.value);
     } else if (shakeAnimationType == ShakeAnimationType.RandomShake) {
       ///随机使用旋转、上下平移、左右平移
       return buildRandowMatrix4();
@@ -72,14 +72,14 @@ class ShakeAnimationBuilder extends StatelessWidget {
       double dy = 0;
       if (shakeAnimationType == ShakeAnimationType.LeftRightShake) {
         ///X轴方向的平移
-        dx = animation.value * 15;
+        dx = animation!.value * 15;
       } else if (shakeAnimationType == ShakeAnimationType.TopBottomShake) {
         ///Y轴方向平移
-        dy = animation.value * 15;
+        dy = animation!.value * 15;
       } else {
         ///对齐线方向平移
-        dx = animation.value * 15;
-        dy = animation.value * 15;
+        dx = animation!.value * 15;
+        dy = animation!.value * 15;
       }
 
       print("dx $dx dy $dy");
@@ -109,20 +109,20 @@ class ShakeAnimationBuilder extends StatelessWidget {
     double dy = 0;
     if (nextRandom % 4 == 0) {
       ///左右平移
-      dx = animation.value * 15 + randomValue * random.nextDouble();
+      dx = animation!.value * 15 + randomValue * random.nextDouble();
       return Matrix4.translationValues(dx, dy, 0);
     } else if (nextRandom % 4 == 1) {
       ///上下平移
-      dy = animation.value * 15 + randomValue * random.nextDouble();
+      dy = animation!.value * 15 + randomValue * random.nextDouble();
       return Matrix4.translationValues(dx, dy, 0);
     } else if (nextRandom % 4 == 2) {
       ///对角线平移
-      dx = animation.value * 15 + randomValue * random.nextDouble();
-      dy = animation.value * 15 + randomValue * random.nextDouble();
+      dx = animation!.value * 15 + randomValue * random.nextDouble();
+      dy = animation!.value * 15 + randomValue * random.nextDouble();
       return Matrix4.translationValues(dx, dy, 0);
     } else {
       ///旋转
-      return Matrix4.rotationZ(animation.value);
+      return Matrix4.rotationZ(animation!.value);
     }
   }
 }
