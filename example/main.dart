@@ -65,6 +65,7 @@ class _TestPageState extends State<TestPage> {
     return RoteFloatingButton(
       //子菜单按钮选项
       iconList: iconList,
+
       ///子菜单按钮的点击事件回调
       clickCallback: (int index) {
         print("点击了按钮$index");
@@ -132,20 +133,19 @@ class _TestPageState extends State<TestPage> {
 
   Widget buildProgressButton() {
     return //切换样式的动画按钮
-      AnimatedButton(
-        width: 120.0,
-        height: 40,
-        buttonText: '动画样式按钮',
-        clickCallback: (){
-          print("点击事件回调");
-        },
-      );
+        AnimatedButton(
+      width: 120.0,
+      height: 40,
+      buttonText: '动画样式按钮',
+      clickCallback: () {
+        print("点击事件回调");
+      },
+    );
   }
-
 
   //动画按钮使用到的控制器
   AnimatedStatusController animatedStatusController =
-  new AnimatedStatusController();
+      new AnimatedStatusController();
 
   //切换样式的动画按钮
   Widget buildAnimatedStatusButton() {
@@ -177,8 +177,6 @@ class _TestPageState extends State<TestPage> {
       },
     );
   }
-
-
 }
 
 //防开源中国自定义底部菜单
@@ -239,11 +237,11 @@ class _ExampleState extends State<Example309> {
 class Example310 extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _ExampleState();
+    return _ExampleState310();
   }
 }
 
-class _ExampleState extends State<Example310> {
+class _ExampleState310 extends State<Example310> {
   ///构建菜单所使用到的图标
   List<Icon> iconList = [
     Icon(

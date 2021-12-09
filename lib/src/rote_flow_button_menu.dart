@@ -17,19 +17,19 @@ class RoteFlowButtonMenu extends StatefulWidget {
   final List<Icon> iconList;
 
   ///菜单图标背景
-  final List<Color> iconBackgroundColorList;
+  final List<Color>? iconBackgroundColorList;
 
   ///所有菜单项默认使用的底色
   final Color defaultBackgroundColor;
 
   ///点击事件回调
-  final Function(int index) clickCallBack;
+  final Function(int index)? clickCallBack;
 
   ///是否输出Log
   final bool isLog;
 
   RoteFlowButtonMenu(
-      {@required this.iconList,
+      {required this.iconList,
       this.clickCallBack,
       this.isLog = false,
       this.defaultBackgroundColor = Colors.deepOrange,
@@ -50,10 +50,10 @@ class _MenuState extends State<RoteFlowButtonMenu>
   bool _closed = true;
 
   ///动画控制器
-  AnimationController _controller;
+  late AnimationController _controller;
 
   ///用于控制变化速率
-  Animation<double> animation;
+  late Animation<double> animation;
 
   ///用于保存显示出来的菜单效果Widget
   List<Widget> menuItemList = [];
@@ -140,15 +140,15 @@ class _MenuState extends State<RoteFlowButtonMenu>
     for (int i = 0; i < iconList.length; i++) {
       Color itemColor = widget.defaultBackgroundColor;
       if (widget.iconBackgroundColorList != null &&
-          widget.iconBackgroundColorList.length > i) {
-        itemColor = widget.iconBackgroundColorList[i];
+          widget.iconBackgroundColorList!.length > i) {
+        itemColor = widget.iconBackgroundColorList![i];
       }
 
       ///每个菜单添加InkWell点击事件
       Widget itemContainer = InkWell(
         onTap: () {
           if (widget.clickCallBack != null) {
-            widget.clickCallBack(i);
+            widget.clickCallBack!(i);
           }
 
           ///打开或者关闭菜单
@@ -249,7 +249,7 @@ class RoteFlowButtonMenuDelegate extends FlowDelegate {
     //计算每一个子widget的位置
     for (var i = 0; i < context.childCount - 1; i++) {
       ///获取第i个子Widget的大小
-      Size itemChildSize = context.getChildSize(i);
+      Size itemChildSize = context.getChildSize(i)!;
 
       ///子child开始绘制的y中心点
       double normalHeight = flowHeight - itemChildSize.height * 2;
@@ -265,7 +265,7 @@ class RoteFlowButtonMenuDelegate extends FlowDelegate {
 
     ///最后一个做为菜单选项
     int lastIndex = context.childCount - 1;
-    Size lastChildSize = context.getChildSize(lastIndex);
+    Size lastChildSize = context.getChildSize(lastIndex)!;
     double lastx = (flowWidth - lastChildSize.height * 1.5);
     double lasty = flowHeight - lastChildSize.height * 2;
 

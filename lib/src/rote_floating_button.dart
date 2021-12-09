@@ -12,10 +12,10 @@ import 'package:flutter/painting.dart';
 ////旋转变换按钮 向上弹出的效果
 class RoteFloatingButton extends StatefulWidget {
   //菜单按钮选项
-  final List<Icon> iconList;
+  final List<Icon>? iconList;
 
   //按钮的点击事件
-  final Function(int index) clickCallback;
+  final Function(int index)? clickCallback;
 
   RoteFloatingButton({this.iconList, this.clickCallback});
 
@@ -29,16 +29,16 @@ class _RoteButtonPageState extends State<RoteFloatingButton> with SingleTickerPr
   bool isOpened = false;
 
   //动画控制器
-  AnimationController _animationController;
+  late AnimationController _animationController;
 
   //颜色变化取值
-  Animation<Color> _animateColor;
+  late Animation<Color?> _animateColor;
 
   //图标变化取值
-  Animation<double> _animateIcon;
+  late Animation<double> _animateIcon;
 
   //按钮的位置动画
-  Animation<double> _translateButton;
+  late Animation<double> _translateButton;
 
   //动画执行速率
   Curve _curve = Curves.easeOut;
@@ -88,13 +88,13 @@ class _RoteButtonPageState extends State<RoteFloatingButton> with SingleTickerPr
   Widget build(BuildContext context) {
     //构建子菜单
     List<Widget> itemList = [];
-    for (int i = 0; i < widget.iconList.length; i++) {
+    for (int i = 0; i < widget.iconList!.length; i++) {
       //通过Transform来促成FloatingActionButton的平移
       itemList.add(
         Transform(
           transform: Matrix4.translationValues(
             0.0,
-            _translateButton.value * (widget.iconList.length - i),
+            _translateButton.value * (widget.iconList!.length - i),
             0.0,
           ),
           child: FloatingActionButton(
@@ -103,10 +103,10 @@ class _RoteButtonPageState extends State<RoteFloatingButton> with SingleTickerPr
               //点击菜单子选项要求菜单弹缩回去
               floatClick();
               if (widget.clickCallback != null) {
-                widget.clickCallback(i);
+                widget.clickCallback!(i);
               }
             },
-            child: widget.iconList[i],
+            child: widget.iconList![i],
           ),
         ),
       );

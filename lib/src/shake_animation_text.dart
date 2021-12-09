@@ -17,7 +17,7 @@ class ShakeTextAnimationWidget extends StatefulWidget {
   final String animationString;
 
   ///文本样式
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
   ///文字之间的间距
   final double space;
@@ -28,7 +28,7 @@ class ShakeTextAnimationWidget extends StatefulWidget {
   ///抖动次数
   final shakeCount;
   ShakeTextAnimationWidget(
-      {@required this.animationString,
+      {required this.animationString,
       this.textStyle,
       this.space = 1,
       this.runSpace = 6,

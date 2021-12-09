@@ -13,9 +13,9 @@ class AnimatedStatusButton extends StatefulWidget {
   final double width;
 
   ///按钮控制器
-  final AnimatedStatusController animatedStatusController;
+  final AnimatedStatusController? animatedStatusController;
   ///按钮上的文字
-  final String buttonText;
+  final String? buttonText;
   ///按下时的背景颜色
   final Color backgroundSelectColor;
 
@@ -31,7 +31,7 @@ class AnimatedStatusButton extends StatefulWidget {
   ///选中状态下的边框颜色
   final Color borderSelectColor;
   ///按钮点击事件回调
-  final Function clickCallback;
+  final Function? clickCallback;
   ///动画交互时间
   final int milliseconds;
   ///圆角大小
@@ -41,7 +41,7 @@ class AnimatedStatusButton extends StatefulWidget {
   final bool isUseSelect ;
 
   AnimatedStatusButton({
-    Key key,
+    Key? key,
     this.height = 44.0,
     this.width = 200.0,
     this.borderRaidus = 22.0,
@@ -68,20 +68,20 @@ class _AnimatedButtonState extends State<AnimatedStatusButton>
     with TickerProviderStateMixin {
   ///属性配制值转接
   ///按钮上的文本的颜色
-  Color textColor;
+  Color? textColor;
 
   ///按钮背景的颜色
-  Color containerColor;
+  Color? containerColor;
 
   ///按钮背景边框的颜色
-  Color borderColor;
+  Color? borderColor;
 
   ///按钮的高度
   double containerHeight = 0;
   double containerWidth = 0;
 
   ///按钮的背景圆角
-  double borderRaidus;
+  late double borderRaidus;
 
   ///用来设置小圆圈的大小
   ///所以这里设置的与 [containerHeight]相同
@@ -89,9 +89,9 @@ class _AnimatedButtonState extends State<AnimatedStatusButton>
 
   bool isSelect = false;
   ///动画过渡时间
-  int milliseconds;
+  late int milliseconds;
   ///小圆圈使用到的透明度过渡
-  double opacity;
+  late double opacity;
 
   ///配置默认的样式
   @override
@@ -103,7 +103,7 @@ class _AnimatedButtonState extends State<AnimatedStatusButton>
 
     ///添加按钮控制器
     if (widget.animatedStatusController != null) {
-      widget.animatedStatusController.setStatusListener((isClose) {
+      widget.animatedStatusController!.setStatusListener((isClose) {
         if (isClose) {
           ///恢复正常
           isSelect = false;
@@ -220,7 +220,7 @@ class _AnimatedButtonState extends State<AnimatedStatusButton>
         controlSelect();
         ///同时触发回调
         if (widget.clickCallback != null) {
-          bool isClose = await widget.clickCallback();
+          bool isClose = await widget.clickCallback!();
           if (isClose) {
             isSelect = !isSelect;
             controlNormal();
@@ -230,7 +230,7 @@ class _AnimatedButtonState extends State<AnimatedStatusButton>
       } else {
         ///只触发回调
         if (widget.clickCallback != null) {
-          widget.clickCallback();
+          widget.clickCallback!();
         }
         setState(() {
           controlNormal();
@@ -253,7 +253,7 @@ class _AnimatedButtonState extends State<AnimatedStatusButton>
         ///圆角
         borderRadius: BorderRadius.circular(borderRaidus),
         ///边框
-        border: Border.all(color: borderColor, width: 2.0),
+        border: Border.all(color: borderColor!, width: 2.0),
         ///背景颜色
         color: containerColor,
       ),
@@ -278,7 +278,7 @@ class _AnimatedButtonState extends State<AnimatedStatusButton>
   Widget buildTextWidget() {
     ///文本动画样式
     return AnimatedDefaultTextStyle(
-      child: Text(widget.buttonText),
+      child: Text(widget.buttonText!),
       duration: Duration(milliseconds: milliseconds ~/ 3),
       style: TextStyle(
         color: textColor,
@@ -318,7 +318,7 @@ typedef AnimatedStatusButtonListener = void Function(bool isClose);
 
 ///控制器
 class AnimatedStatusController {
-  AnimatedStatusButtonListener _animatedStatusButtonListener;
+  AnimatedStatusButtonListener? _animatedStatusButtonListener;
 
   ///控制器中添加监听
   setStatusListener(AnimatedStatusButtonListener listener) {
@@ -328,14 +328,14 @@ class AnimatedStatusController {
   ///选择
   void select() {
     if (_animatedStatusButtonListener != null) {
-      _animatedStatusButtonListener(false);
+      _animatedStatusButtonListener!(false);
     }
   }
 
   ///关闭
   void close() {
     if (_animatedStatusButtonListener != null) {
-      _animatedStatusButtonListener(true);
+      _animatedStatusButtonListener!(true);
     }
   }
 }
